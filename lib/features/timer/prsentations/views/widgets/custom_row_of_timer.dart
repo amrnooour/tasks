@@ -1,7 +1,14 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 
 class CustomRowOfTimer extends StatelessWidget {
-  const CustomRowOfTimer({super.key});
+  void Function()? onTap;
+  int hours;
+  int minutes;
+  int seconds;
+  IconData? icon;
+  CustomRowOfTimer({super.key,required this.hours,required this.minutes,required this.seconds,this.icon,this.onTap});
 
   @override
   Widget build(BuildContext context) {
@@ -9,12 +16,17 @@ class CustomRowOfTimer extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         Container(
-          height: 50,
-          width: 50,
+          height: 40,
+          width: 40,
           decoration: BoxDecoration(color: Colors.white,borderRadius: BorderRadius.circular(25)),
-          child: const Icon(Icons.pause,size: 25,),
+          child:  GestureDetector(
+            onTap: onTap,
+            child: Icon(icon,size: 25,)),
         ),
-        const Text("00:07:30",style: TextStyle(fontSize: 20,color: Colors.white),),
+         Column(children: [
+          Text("$hours:$minutes:$seconds",style: const TextStyle(fontSize: 25,color: Colors.white),),
+          const SizedBox(height: 20,),
+        ] ),
         const Icon(Icons.close,size: 35,color: Colors.white,)
       ],
     );

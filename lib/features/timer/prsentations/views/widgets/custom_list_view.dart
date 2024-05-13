@@ -7,13 +7,13 @@ class CustomListView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 7,
+      height: 6,
       width: double.infinity,
       child: ListView.builder(
         scrollDirection: Axis.horizontal,
         itemCount: 6,
         itemBuilder: (context, index) =>  Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 5),
+          padding: const EdgeInsets.symmetric(horizontal: 2),
           child: CustomItemListView(isColor: index==5?false:true,),
         ),),
     );
